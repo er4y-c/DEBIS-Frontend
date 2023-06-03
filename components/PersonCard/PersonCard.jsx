@@ -2,8 +2,10 @@ import React, { useContext } from 'react'
 import { AuthContext } from "../../context/auth"
 import Image from 'next/image'
 import classNames from 'classnames'
+
 const PersonCard = () => {
   const { user } = useContext(AuthContext)
+
   return (
     <div className='flex flex-col justify-center items-center w-[300px] bg-white rounded-xl mx-16 my-16'>
         <div className='mt-8'>
