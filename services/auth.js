@@ -1,7 +1,8 @@
 import axios from "axios"
+import Cookies from "js-cookie"
 
 export const auth_api = axios.create({
-    baseURL: process.env.AUTH_BASE_URL,
+    baseURL: "http://localhost:8000/",
     headers: {
       Accept: 'application/json',
       'Content-Type': 'application/json',
@@ -18,19 +19,18 @@ auth_api.interceptors.request.use((config) => {
   })
 
 export const auth_services = {
-    login: async(email, password) => {
-        const { tokenData } = await auth_api.post(
-            '/login',
-            { email, password },
-            {
-              headers: {
-                'Content-Type': 'application/x-www-form-urlencoded',
-              },
-            },
-          )
-          const { data: userInfo } = await auth_api.get('/me', {
-            headers: { Authorization: tokenData.access_token },
-          })
-          return userInfo
+  login: async(email, password) => {
+    const res  = await auth_api.post(
+      '/auth/login',
+      { email, password },
+    )
+    const tokenData = res.data 
+    console.log(tokenData)
+    const { data: userInfo } = await auth_api.get('auth/me', {
+      headers: { Authorization: "Bearer " + tokenData.access_token },
+    })
+    userInfo.access_token = tokenData.access_token
+    console.log(userInfo)
+    return userInfo
     }
 }

@@ -1,15 +1,15 @@
-import React from 'react'
+import React, { useState, useContext } from 'react'
 import Image from 'next/image'
 import Head from 'next/head'
 import FormHeader from '../../components/LoginComponents/FormHeader'
 import LoginInput from '../../components/LoginComponents/LoginInput'
 import LoginButton from '../../components/LoginComponents/LoginButton'
 import { auth_services } from '../../services/auth'
-
+import { AuthContext } from '../../context/auth'
 const login = () => {
-  const submitLogin = (email, password) => {
-    auth_services.login(email, password)
-  }
+  const { login } = useContext(AuthContext) 
+  const [email, setEmail] = useState(null)
+  const [password, setPassword] = useState(null)
   return (
     <>
     <Head>
@@ -30,16 +30,18 @@ const login = () => {
                     id="login_email"
                     name="login_email"
                     type="email"
-                    placeholder="Eposta adresi" 
+                    placeholder="Eposta adresi"
+                    setData={setEmail}
                 />
                 <LoginInput
                     id="login_password"
                     name="login_password"
                     type="password"
-                    placeholder="Parola" 
+                    placeholder="Parola"
+                    setData={setPassword}
                 />
                 <div>
-                  <LoginButton text="Giriş Yap" onClick={()=>console.log("click")}/>   
+                  <LoginButton text="Giriş Yap" onClick={()=>login(email, password)}/>   
                 </div>
             </div>
         </div>
