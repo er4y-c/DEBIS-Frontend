@@ -75,7 +75,7 @@ const Navbar = () => {
                 <span className="sr-only">Kullanıcı Menüsü</span>
                 <img
                   className="h-8 w-8 rounded-full"
-                  src="/avatar.jpg"
+                  src="/assets/images/user.jpg"
                   alt="Profil Resmi"
                 />
               </button>

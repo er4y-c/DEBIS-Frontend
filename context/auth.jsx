@@ -26,6 +26,7 @@ export const AuthContextProvider = ({ children }) => {
     Cookies.remove('token')
     Cookies.remove('user-info')
     router.replace('/auth/login')
+    router.reload()
   }
 
   useEffect(() => {

@@ -1,6 +1,8 @@
-import React from 'react'
+import React, { useContext } from 'react'
+import { AuthContext } from "../../context/auth"
 
 const UserPopup = ({ isOpen }) => {
+  const { logout } = useContext(AuthContext)
   return (
     <div>
         {isOpen && (
@@ -25,13 +27,13 @@ const UserPopup = ({ isOpen }) => {
                     >
                       Ayarlar
                     </a>
-                    <a
-                      href="#"
-                      className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+                    <button
+                      className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 w-full text-left"
                       role="menuitem"
+                      onClick={logout}
                     >
                       Çıkış Yap
-                    </a>
+                    </button>
                 </div>
             </div>
             )}

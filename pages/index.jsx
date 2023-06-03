@@ -1,13 +1,15 @@
 import React from 'react'
 import PageContainer from '../components/PageContainer/PageContainer'
-const Main = () => {
+import PersonCard from '../components/PersonCard/PersonCard'
+
+const HomePage = () => {
   return (
     <div>
       <PageContainer>
-        <div>index</div>
+        <PersonCard />
       </PageContainer>
     </div>
   )
 }
 
-export default Main
+export default HomePage
