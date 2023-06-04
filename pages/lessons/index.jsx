@@ -4,6 +4,7 @@ import LessonCard from '../../components/LessonCard/LessonCard'
 import { AuthContext } from '../../context/auth'
 import { lesson_services } from '../../services/lesson'
 import Dropdown from '../../components/Dropdown/Dropdown'
+import LoadingComponent from '../../components/LoadingComponent/LoadingComponent'
 
 const Lessons = () => {
   const { user } = useContext(AuthContext)
@@ -13,20 +14,25 @@ const Lessons = () => {
   const [year, setYear] = useState(2023)
   const [semester, setSemester] = useState("Güz")
   const [options, setOptions] = useState({})
+  const [isLoading, setIsLoading] = useState(true)
 
   useEffect(() => {
+    setIsLoading(true)
     lesson_services.get_semester_lesson(user?.id, year, semester)
       .then((res) => {
         setLesson(res?.course_list)
         setCodeList(res?.course_codes)
         setNameList(res?.course_names)
+        setIsLoading(false)
       })
       .catch(() => {
         setLesson([])
         setCodeList([])
         setNameList([])
+        setIsLoading(false)
       })
   }, [year, semester])
+
   useEffect(() => {
     lesson_services.get_dropdown_options(user?.id)
       .then((res) => {
@@ -36,9 +42,12 @@ const Lessons = () => {
         setOptions({})
       })
   }, [])
+
   return (
     <PageContainer showNavbar>
-        <div className='flex gap-x-4 mt-8 mr-4 w-full'>
+        { isLoading ? (<LoadingComponent />) :
+        (<>
+        <div className='flex flex-col lg:flex-row gap-x-4 gap-y-4 mt-8 mr-4 w-full'>
           <div className='flex-1'>
             <Dropdown initialValue={year} setFilter={setYear} options={options?.years} />
           </div>
@@ -58,6 +67,8 @@ const Lessons = () => {
             <div>Page empty</div>
           }
         </div>
+        </>)
+      }
     </PageContainer>
   )
 }
