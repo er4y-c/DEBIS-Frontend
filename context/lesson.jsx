@@ -10,43 +10,38 @@ export const LessonContext = createContext({
 })
 
 export const LessonContextProvider = ({ children }) => {
-    const { user } = useContext(AuthContext);
+    const { user } = useContext(AuthContext)
+    const [lesson, setLesson] = useState([])
+    const [nameList, setNameList] = useState([])
+    const [codeList, setCodeList] = useState([])
     const [filter, setFilter] = useState({
-      year: 2022,
+      year: 2023,
       semester: 0,
-    });
-    const [lesson, setLesson] = useState([]);
-  
-    const getLessons = async () => {
-      try {
-        const data = await lesson_services.get_semester_lesson(
-          user.id,
-          filter.year,
-          filter.semester
-        );
-        return data;
-      } catch (error) {
-        console.error(error);
-        return [];
-      }
-    };
-  
+    })
+
     useEffect(() => {
-      lesson_services.get_semester_lesson(
-        user.id,
-        filter.year,
-        filter.semester
-      ).then((res) => {
-        setLesson(res)
-      }).catch(() => {
-        setLesson([])
-      })
+      lesson_services.get_semester_lesson(user?.id, filter?.year, filter?.semester)
+        .then((res) => {
+          setLesson(res?.course_list)
+          setCodeList(res?.course_codes)
+          setNameList(res?.course_names)
+        })
+        .catch(() => {
+          setLesson([])
+          setCodeList([])
+          setNameList([])
+        })
     }, [])
   
     const context = {
       lesson,
+      setLesson,
       filter,
       setFilter,
+      codeList,
+      setCodeList,
+      nameList,
+      setNameList
     }
   
     return (

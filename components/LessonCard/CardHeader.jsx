@@ -1,13 +1,13 @@
 import React from 'react'
 
-const CardHeader = ({ headerData }) => {
+const CardHeader = ({ name, code }) => {
   return (
-    <div className='flex justify-center items-center gap-x-4 mt-8 mx-2'>
-        <div className='flex shrink-0'>
-            <p className='text-blue-400 bg-blue-100 rounded-xl py-4 px-3 font-semibold'>{headerData?.lesson_id}</p>
+    <div className='flex items-center gap-x-4 mt-8 ml-16 mr-8 w-full'>
+        <div>
+            <p className='text-blue-400 bg-blue-100 rounded-xl py-4 px-3 font-semibold w-24'>{code}</p>
         </div>
-        <div className=''>
-            <p className='font-bold'>{headerData?.lesson_id}</p>
+        <div>
+            <p className='font-bold'>{name}</p>
         </div>
     </div>
   )
