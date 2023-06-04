@@ -3,18 +3,18 @@ import PageContainer from '../../components/PageContainer/PageContainer'
 import LessonCard from '../../components/LessonCard/LessonCard'
 import { AuthContext } from '../../context/auth'
 import { lesson_services } from '../../services/lesson'
+import Dropdown from '../../components/Dropdown/Dropdown'
 
 const Lessons = () => {
   const { user } = useContext(AuthContext)
   const [lesson, setLesson] = useState([])
   const [nameList, setNameList] = useState([])
   const [codeList, setCodeList] = useState([])
-  const [filter, setFilter] = useState({
-    year: 2023,
-    semester: 0,
-  })
+  const [year, setYear] = useState(2023)
+  const [semester, setSemester] = useState(0)
+
   useEffect(() => {
-    lesson_services.get_semester_lesson(user?.id, filter?.year, filter?.semester)
+    lesson_services.get_semester_lesson(user?.id, year, semester)
       .then((res) => {
         setLesson(res?.course_list)
         setCodeList(res?.course_codes)
@@ -25,16 +25,28 @@ const Lessons = () => {
         setCodeList([])
         setNameList([])
       })
-  }, [])
+  }, [year, semester])
 
   return (
     <PageContainer showNavbar>
+        <div className='flex gap-x-4'>
+          <div className='flex-1'>
+            <Dropdown filter={year} setFilter={setYear} />
+          </div>
+          <div className='flex-1'>
+            <Dropdown filter={semester} setFilter={setSemester} />
+          </div>
+        </div>
         <div className='flex flex-wrap gap-x-4 m-auto'>
           {
             lesson && codeList && nameList &&
             lesson.map((item, index)=>(
               <LessonCard lessonData={item} codeData={codeList[index]} nameData={nameList[index]} key={index} />
             ))
+          }
+          {
+            !lesson && !codeList && !nameList &&
+            <div>Page empty</div>
           }
         </div>
     </PageContainer>
