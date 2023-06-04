@@ -9,7 +9,7 @@ const Lessons = () => {
   const { user } = useContext(AuthContext)
   const [lesson, setLesson] = useState([])
   const [filter, setFilter] = useState({
-    year: 2022,
+    year: 2023,
     semester: 0,
   })
   useEffect(() => {
