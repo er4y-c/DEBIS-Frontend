@@ -11,7 +11,8 @@ const Lessons = () => {
   const [nameList, setNameList] = useState([])
   const [codeList, setCodeList] = useState([])
   const [year, setYear] = useState(2023)
-  const [semester, setSemester] = useState(0)
+  const [semester, setSemester] = useState("Güz")
+  const [options, setOptions] = useState({})
 
   useEffect(() => {
     lesson_services.get_semester_lesson(user?.id, year, semester)
@@ -26,15 +27,23 @@ const Lessons = () => {
         setNameList([])
       })
   }, [year, semester])
-
+  useEffect(() => {
+    lesson_services.get_dropdown_options(user?.id)
+      .then((res) => {
+        setOptions(res)
+      })
+      .catch(() => {
+        setOptions({})
+      })
+  }, [])
   return (
     <PageContainer showNavbar>
-        <div className='flex gap-x-4'>
+        <div className='flex gap-x-4 mt-8 mr-4 w-full'>
           <div className='flex-1'>
-            <Dropdown filter={year} setFilter={setYear} />
+            <Dropdown initialValue={year} setFilter={setYear} options={options?.years} />
           </div>
           <div className='flex-1'>
-            <Dropdown filter={semester} setFilter={setSemester} />
+            <Dropdown initialValue={semester} setFilter={setSemester} options={options?.semesters} />
           </div>
         </div>
         <div className='flex flex-wrap gap-x-4 m-auto'>

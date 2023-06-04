@@ -3,10 +3,10 @@ import Navbar from '../Navbar/Navbar'
 
 const PageContainer = ({ children, showNavbar=true }) => {
     return (
-      <div className='h-full w-full bg-gray-200'>
+      <div className='h-screen w-full bg-gray-200'>
         { showNavbar && <Navbar /> }
-        <div className='flex pl-32'>
-          <div>
+        <div className='flex px-32'>
+          <div className='w-full'>
             {children}
           </div>
         </div>

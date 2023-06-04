@@ -4,7 +4,7 @@ const TransactionPopup = ({ isOpen, menuList }) => {
   return (
     <>
     {isOpen &&
-        <div className="absolute mt-12 py-2 w-48 bg-white rounded-md shadow-lg">
+        <div className="absolute mt-12 py-2 w-48 bg-white rounded-md shadow-lg z-20">
         {menuList.map((menu, index)=>(
             <a
                 key={index}

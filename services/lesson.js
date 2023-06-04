@@ -9,5 +9,9 @@ export const lesson_services = {
       },
     })
     return res.data;
+  },
+  get_dropdown_options: async (student_id) => {
+      const res = await debis_api.get(`/lesson/options/${student_id}`)
+      return res.data
   } 
 }

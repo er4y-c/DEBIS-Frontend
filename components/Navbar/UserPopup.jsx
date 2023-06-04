@@ -6,7 +6,7 @@ const UserPopup = ({ isOpen }) => {
   return (
     <div>
         {isOpen && (
-            <div className="origin-top-right absolute right-0 mt-[40px] w-48 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5">
+            <div className="origin-top-right absolute right-0 mt-[40px] w-48 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 z-20">
                 <div
                     className="py-1"
                     role="menu"
