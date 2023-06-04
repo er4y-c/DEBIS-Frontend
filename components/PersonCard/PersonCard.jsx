@@ -9,7 +9,7 @@ const PersonCard = () => {
   return (
     <div className='flex flex-col justify-center items-center w-[300px] bg-white rounded-xl mx-16 my-16'>
         <div className='mt-8'>
-            <Image className='rounded-xl' src="/assets/images/user.jpg" width={100} height={100}/>
+            <Image className='rounded-xl' src="/assets/images/user.jpg" width={100} height={100} alt='User photo' />
         </div>
         <div className='flex flex-col justify-center items-center mt-4'>
             <p className='font-semibold text-xl'>{user.full_name}</p>

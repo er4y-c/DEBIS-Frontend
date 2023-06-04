@@ -17,7 +17,7 @@ const login = () => {
     </Head>
     <div className='flex justify-center align-center h-[100vh]'>
         <div className='relative w-[50vw]'>
-            <Image src="/assets/images/deu_background.png" fill/>
+            <Image src="/assets/images/deu_background.png" alt='Deu campus' fill priority/>
         </div>
         <div className="flex flex-col justify-center items-center w-1/2">
             <div className='flex flex-col w-2/3 gap-y-4 relative pb-12'>

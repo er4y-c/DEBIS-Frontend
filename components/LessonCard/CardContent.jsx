@@ -1,6 +1,6 @@
 import React from 'react'
 
-const CardContent = () => {
+const CardContent = ({ examData }) => {
   return (
     <table className='w-4/5 mt-4 mb-8'>
         <thead>
@@ -14,17 +14,17 @@ const CardContent = () => {
           <tr>
             <td className='border-b-2 border-gray-100 px-4 py-2 text-sm'>25</td>
             <td className='border-b-2 border-gray-100 px-4 py-2 text-sm'>Ara Sınav</td>
-            <td className='border-b-2 border-gray-100 px-4 py-2 text-sm'>95</td>
+            <td className='border-b-2 border-gray-100 px-4 py-2 text-sm'>{examData?.ara_sinav}</td>
           </tr>
           <tr>
             <td className='border-b-2 border-gray-100 px-4 py-2 text-sm'>15</td>
             <td className='border-b-2 border-gray-100 px-4 py-2 text-sm'>Kısa Sınav</td>
-            <td className='border-b-2 border-gray-100 px-4 py-2 text-sm'>90</td>
+            <td className='border-b-2 border-gray-100 px-4 py-2 text-sm'>{examData?.diger_sinav}</td>
           </tr>
           <tr>
             <td className='border-b-2 border-gray-100 px-4 py-2 text-sm'>60</td>
             <td className='border-b-2 border-gray-100 px-4 py-2 text-sm'>Final</td>
-            <td className='border-b-2 border-gray-100 px-4 py-2 text-sm'>100</td>
+            <td className='border-b-2 border-gray-100 px-4 py-2 text-sm'>{examData?.final}</td>
           </tr>
           <tr>
             <td colSpan='3' className='h-3'></td>
