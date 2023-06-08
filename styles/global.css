@@ -2,17 +2,21 @@
 @tailwind components;
 @tailwind utilities;
 
+
 @layer base {
   @font-face {
-    font-family: Proxima Nova;
+    font-family: Roboto;
     font-weight: 400;
     font-size: 15px;
-    src: url(/fonts/proxima-nova-regular.woff2) format('woff2');
+    src: url(/fonts/Roboto-Medium.ttf) format('truetype');
   }
+}
+
+@layer base {
   @font-face {
-    font-family: Proxima Nova;
+    font-family: Roboto;
     font-weight: 500;
     font-size: 15px;
-    src: url(/fonts/proxima-nova-semobold.woff2) format('woff2');
+    src: url(/fonts/Roboto-Bold.ttf) format('truetype');
   }
 }
