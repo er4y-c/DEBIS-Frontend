@@ -1,5 +1,4 @@
 import { createContext, useState, useEffect, useContext } from 'react'
-import { useRouter } from 'next/router'
 import { lesson_services } from '../services/lesson'
 import { AuthContext } from './auth'
 
@@ -18,6 +17,7 @@ export const LessonContextProvider = ({ children }) => {
       year: 2023,
       semester: 0,
     })
+    const [selectedMenu, setSelectedMenu] = useState('Duyurular')
 
     useEffect(() => {
       lesson_services.get_semester_lesson(user?.id, filter?.year, filter?.semester)
@@ -41,7 +41,9 @@ export const LessonContextProvider = ({ children }) => {
       codeList,
       setCodeList,
       nameList,
-      setNameList
+      setNameList,
+      selectedMenu,
+      setSelectedMenu,
     }
   
     return (

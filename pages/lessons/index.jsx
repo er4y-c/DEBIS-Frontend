@@ -65,7 +65,7 @@ const Lessons = () => {
           {
             !lesson && !codeList && !nameList &&
             <div>Page empty</div>
-          }
+          }         
         </div>
         </>)
       }
