@@ -8,9 +8,9 @@ import { LessonContext } from '../../context/lesson'
 const LessonPage = () => {
   const router = useRouter()
   const { lesson_id } = router.query
-  console.log(lesson_id)
+
   const [lessonData, setLessonData] = useState({})
-  const { selectedMenu } = useContext(LessonContext)
+  const [selectedMenu, setSelectedMenu] = useState('Duyurular')
 
   useEffect(()=>{
     lesson_services.get_current_lesson(lesson_id)
@@ -26,7 +26,7 @@ const LessonPage = () => {
     <PageContainer>
         <div className='flex'>
             <div>
-                <MenuComponent lessonData={lessonData} />
+                <MenuComponent lessonData={lessonData} selectedMenu={selectedMenu} setSelectedMenu={setSelectedMenu} />
             </div>
             <div>{ selectedMenu }</div>
         </div>

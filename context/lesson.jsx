@@ -17,7 +17,6 @@ export const LessonContextProvider = ({ children }) => {
       year: 2023,
       semester: 0,
     })
-    const [selectedMenu, setSelectedMenu] = useState('Duyurular')
 
     useEffect(() => {
       lesson_services.get_semester_lesson(user?.id, filter?.year, filter?.semester)
@@ -32,7 +31,9 @@ export const LessonContextProvider = ({ children }) => {
           setNameList([])
         })
     }, [])
-  
+
+    const [selectedMenu, setSelectedMenu] = useState('Duyurular')
+
     const context = {
       lesson,
       setLesson,
@@ -46,7 +47,5 @@ export const LessonContextProvider = ({ children }) => {
       setSelectedMenu,
     }
   
-    return (
-      <LessonContext.Provider value={context}>{children}</LessonContext.Provider>
-    )
+    return <LessonContext.Provider value={context}>{children}</LessonContext.Provider>
   }
