@@ -1,0 +1,6 @@
+export {default as DevamDurumuPage} from './DevamDurumu'
+export {default as DuyurularPage} from './Duyurular'
+export {default as NotlarPage} from './Notlar'
+export {default as OdevlerPage} from './Odevler'
+export {default as SınavlarPage} from './Sınavlar'
+export {default as SınıfPage} from './Sınıf'

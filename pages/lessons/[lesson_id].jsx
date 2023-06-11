@@ -4,6 +4,7 @@ import MenuComponent from '../../components/LessonMenu/MenuComponent'
 import { useRouter } from 'next/router'
 import { lesson_services } from '../../services/lesson'
 import { LessonContext } from '../../context/lesson'
+import { DevamDurumuPage, DuyurularPage, NotlarPage, OdevlerPage, SınavlarPage, SınıfPage } from '../../components/LessonPages'
 
 const LessonPage = () => {
   const router = useRouter()
@@ -28,7 +29,17 @@ const LessonPage = () => {
             <div>
                 <MenuComponent lessonData={lessonData} selectedMenu={selectedMenu} setSelectedMenu={setSelectedMenu} />
             </div>
-            <div>{ selectedMenu }</div>
+            <div className='flex flex-col mt-4'>
+              <div className='mx-8 text-2xl text-gray-700 font-semibold'>
+                {selectedMenu}
+              </div>
+              { selectedMenu==='Duyurular' && <DuyurularPage />}
+              { selectedMenu==='Başarı Notları' && <NotlarPage notData={lessonData} />}
+              { selectedMenu==='Sınıf Ortalamaları' && <SınıfPage />}
+              { selectedMenu==='Ödevler' && <OdevlerPage />}
+              { selectedMenu==='Sınavlar' && <SınavlarPage />}
+              { selectedMenu==='Devam Durumu' && <DevamDurumuPage />}
+            </div>
         </div>
     </PageContainer>
   )
