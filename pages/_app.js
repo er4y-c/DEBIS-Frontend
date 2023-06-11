@@ -2,7 +2,7 @@ import React from "react"
 import "../styles/global.css"
 import { AuthContextProvider, ProtectRoute } from "../context/auth"
 import { SWRConfig } from 'swr'
-
+import { LessonContextProvider } from '../context/lesson'
 export default function App({ Component, pageProps }) {
     return(
         <SWRConfig
@@ -14,7 +14,9 @@ export default function App({ Component, pageProps }) {
         >
             <AuthContextProvider>
                 <ProtectRoute>
-                <Component {...pageProps} /> 
+                  <LessonContextProvider>
+                    <Component {...pageProps} />  
+                  </LessonContextProvider>
                 </ProtectRoute>
             </AuthContextProvider>
         </SWRConfig>

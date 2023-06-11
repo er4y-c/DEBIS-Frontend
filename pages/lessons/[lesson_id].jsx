@@ -11,7 +11,7 @@ const LessonPage = () => {
   const { lesson_id } = router.query
 
   const [lessonData, setLessonData] = useState({})
-  const [selectedMenu, setSelectedMenu] = useState('Duyurular')
+  const { selectedMenu, setSelectedMenu }=useContext(LessonContext)
 
   useEffect(()=>{
     lesson_services.get_current_lesson(lesson_id)
