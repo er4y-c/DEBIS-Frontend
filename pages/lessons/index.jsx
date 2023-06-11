@@ -2,19 +2,28 @@ import React, { useContext, useEffect, useState } from 'react'
 import PageContainer from '../../components/PageContainer/PageContainer'
 import LessonCard from '../../components/LessonCard/LessonCard'
 import { AuthContext } from '../../context/auth'
+import { LessonContext } from '../../context/lesson'
 import { lesson_services } from '../../services/lesson'
 import Dropdown from '../../components/Dropdown/Dropdown'
 import LoadingComponent from '../../components/LoadingComponent/LoadingComponent'
 
 const Lessons = () => {
   const { user } = useContext(AuthContext)
-  const [lesson, setLesson] = useState([])
-  const [nameList, setNameList] = useState([])
-  const [codeList, setCodeList] = useState([])
-  const [year, setYear] = useState(2023)
-  const [semester, setSemester] = useState("Güz")
-  const [options, setOptions] = useState({})
-  const [isLoading, setIsLoading] = useState(true)
+  const { 
+    lesson,
+    setLesson,
+    nameList,
+    setNameList,
+    codeList,
+    setCodeList,
+    year,
+    setYear,
+    semester,
+    setSemester,
+    isLoading,
+    setIsLoading,
+    options,
+    setOptions } = useContext(LessonContext)
 
   useEffect(() => {
     setIsLoading(true)
@@ -70,6 +79,7 @@ const Lessons = () => {
         </>)
       }
     </PageContainer>
+
   )
 }
 
