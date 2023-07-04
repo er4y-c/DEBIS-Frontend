@@ -33,7 +33,7 @@ const LessonPage = () => {
               <div className='mx-8 text-2xl text-gray-700 font-semibold'>
                 {selectedMenu}
               </div>
-              { selectedMenu==='Duyurular' && <DuyurularPage />}
+              { selectedMenu==='Duyurular' && <DuyurularPage lessonCode={lessonData?.lesson_code} />}
               { selectedMenu==='Başarı Notları' && <NotlarPage notData={lessonData} />}
               { selectedMenu==='Sınıf Ortalamaları' && <SınıfPage />}
               { selectedMenu==='Ödevler' && <OdevlerPage />}

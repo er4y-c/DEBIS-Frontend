@@ -14,7 +14,7 @@ const HomePage = () => {
 
   return (
     <PageContainer>
-      <div className='flex flex-col lg:flex-row justify-start items-center gap-x-16'>
+      <div className='flex flex-col lg:flex-row gap-x-16 items-start'>
         <PersonCard />
         <AnnounceCard announceData={data} />
       </div>

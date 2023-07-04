@@ -2,7 +2,7 @@ import React from 'react'
 
 const AnnounceCard = ({ announceData }) => {
   return (
-    <div className='flex flex-col bg-white rounded-xl shadow-xl p-4 w-2/3'>
+    <div className='flex flex-col bg-white rounded-xl shadow-xl p-4 w-2/3 my-16'>
       <div className='font-bold text-2xl py-4 border-b-2'>Duyurular</div>
       <div>
        {
