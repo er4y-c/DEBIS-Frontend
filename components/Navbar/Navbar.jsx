@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import Image from 'next/image'
 import TransactionPopup from "./TransactionPopup"
 import UserPopup from "./UserPopup"
+import { FaBullhorn } from "react-icons/fa"
 
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -66,16 +67,26 @@ const Navbar = () => {
               </div>
             </div>
           </div>
-          <div className="hidden md:block">
+          <div className='flex justify-center items-center gap-x-2'>
+            <div className="ml-4 flex items-center md:ml-6">
+              <button
+                className="bg-gray-800 p-1 rounded-full text-gray-400 hover:text-white focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-white"
+              
+              >
+                <FaBullhorn className='w-6 h-6'/>
+              </button>
+              {}
+            </div>
             <div className="ml-4 flex items-center md:ml-6">
               <button
                 className="bg-gray-800 p-1 rounded-full text-gray-400 hover:text-white focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-white"
                 onClick={toggleMenu}
               >
-                <span className="sr-only">Kullanıcı Menüsü</span>
-                <img
-                  className="h-8 w-8 rounded-full"
+                <Image
+                  className="rounded-full"
                   src="/assets/images/user.jpg"
+                  width={30}
+                  height={30}
                   alt="Profil Resmi"
                 />
               </button>
